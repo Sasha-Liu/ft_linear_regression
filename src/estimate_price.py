@@ -5,10 +5,10 @@ def get_coefs():
     Read the coeffients from file.
     """
     try:
-        with open("./data/regression_coefficients") as file:
+        with open("./data/regression_coefficients", "r") as file:
             file_str = file.read()
         coef0, _, coef1 = file_str.partition("\n")
-        return int(coef0), int(coef1)
+        return float(coef0), float(coef1)
     except Exception:
         print("Invalid ./regression_coeffients file, coeffients default to zero")
         return 0, 0
@@ -24,8 +24,8 @@ def prompt_user():
     Estimate car price based on mileage given by user.
     """
     try:
-        mileage = input("Please enter car mileage (integer): ")
-        mileage = int(mileage)
+        mileage = input("Please enter car mileage (km): ")
+        mileage = float(mileage)
         price = estimate_price(mileage)
         print(f"The estimated price is {price}")
     except Exception:
