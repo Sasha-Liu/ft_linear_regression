@@ -1,5 +1,5 @@
-from linear_regression.utils import read_thetas
-from linear_regression.math import predict
+from linear_regression.read_write import read_thetas
+from linear_regression.calculation import predict
 
 
 def predict_price():

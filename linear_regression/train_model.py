@@ -1,5 +1,5 @@
-from linear_regression.utils import read_data, read_thetas, write_thetas
-from linear_regression.math import train, mean_squared_error
+from linear_regression.read_write import read_data, read_thetas, write_thetas
+from linear_regression.calculation import train, mean_squared_error
 
 
 def train_model():
