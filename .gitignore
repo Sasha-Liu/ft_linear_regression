@@ -1,1 +1,6 @@
 .venv
+/bin
+/include
+/lib
+/share
+/pyvenv.cfg
