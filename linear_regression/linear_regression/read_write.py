@@ -1,4 +1,3 @@
-import numpy as np
 
 
 def read_data():
@@ -14,7 +13,7 @@ def read_data():
         print("[ERROR] Failed to read data file.")
         raise e
 
-    return np.array(data)
+    return data
 
 
 def read_thetas():
