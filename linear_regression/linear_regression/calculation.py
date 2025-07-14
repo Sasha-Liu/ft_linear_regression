@@ -70,17 +70,21 @@ def train(data, theta0, theta1):
         temp_theta0 = LEARNING_RATE * (temp_theta0 / len(data))
         temp_theta1 = LEARNING_RATE * (temp_theta1 / len(data))
         return theta0 - temp_theta0, theta1 - temp_theta1
-    
-    logging_message = "[INFO] Loop {number:6} | theta0: {theta0:9.3f} | theta1: {theta1:9.3f} | MSE: {mse:15.3f}"
-    
+
+    logging_message = "[INFO] Loop {:6} | theta0: {:9.3f} | theta1: {:9.3f} | MSE: {:15.3f}"  # noqa: E501
+
     data = standardize_mileages(data)
 
-    print(logging_message.format(number="BEFORE", theta0=theta0, theta1=theta1, mse=mean_squared_error(data, theta0, theta1)))
+    print(logging_message.format(
+        "BEFORE", theta0, theta1, mean_squared_error(data, theta0, theta1)))
+
     for number in range(1, LOOP_COUNT + 1):
         theta0, theta1 = loop(data, theta0, theta1)
         if number % 100 == 0:
-            print(logging_message.format(number=number, theta0=theta0, theta1=theta1, mse=mean_squared_error(data, theta0, theta1)))
-            
-    print(logging_message.format(number="AFTER", theta0=theta0, theta1=theta1, mse=mean_squared_error(data, theta0, theta1)))
+            print(logging_message.format(
+                number, theta0, theta1, mean_squared_error(data, theta0, theta1)))  # noqa: E501
+
+    print(logging_message.format(
+        "AFTER", theta0, theta1, mean_squared_error(data, theta0, theta1)))
 
     return theta0, theta1

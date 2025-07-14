@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
 from linear_regression.read_write import read_data, read_thetas
 from linear_regression.calculation import (
@@ -12,7 +11,7 @@ def calculate_linear_regression_line(theta0, theta1, avg, sd):
     """
     Math:
         The linear regression line on the standardized data is:
-        
+
             y = ax` + b
 
         where x` is the standardized data.
@@ -21,13 +20,13 @@ def calculate_linear_regression_line(theta0, theta1, avg, sd):
 
             x` = (x - avg) / sd
 
-        where 
+        where
             x is the original data
             avg is the average of the data
             sd is the standard deviation of the data.
 
         If we replace x` with (x - avg) / sd, we have:
-        
+
             y = a * ((x - avg) / sd) + b
 
         Then we just have to find where the line touch the axes.

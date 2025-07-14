@@ -1,5 +1,3 @@
-import numpy as np
-
 from linear_regression.read_write import read_data, read_thetas, write_thetas
 from linear_regression.calculation import train
 
