@@ -1,9 +1,11 @@
+DATA_FILE = "linear_regression/data/data.csv"
+THETAS_FILE = "linear_regression/data/thetas.txt"
 
 
 def read_data():
     data = []
     try:
-        with open("linear_regression/data/data.csv", "r", encoding="utf-8") as file:
+        with open(DATA_FILE, "r", encoding="utf-8") as file:
             lines = file.readlines()
         lines = lines[1:]
         for line in lines:
@@ -18,7 +20,7 @@ def read_data():
 
 def read_thetas():
     try:
-        with open("linear_regression/data/thetas.txt", "r", encoding="utf-8") as file:
+        with open(THETAS_FILE, "r", encoding="utf-8") as file:
             params = file.read()
         theta0, theta1 = params.split("\n")
         theta0 = float(theta0)
@@ -31,7 +33,7 @@ def read_thetas():
 
 def write_thetas(new_thata0, new_theta1):
     try:
-        with open("linear_regression/data/thetas.txt", "w", encoding="utf-8") as file:
+        with open(THETAS_FILE, "w", encoding="utf-8") as file:
             file.write(f"{new_thata0}\n{new_theta1}")
     except Exception as e:
         print(f"[ERROR] Failed to update thetas file: {e}")

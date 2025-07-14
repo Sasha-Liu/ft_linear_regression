@@ -1,7 +1,8 @@
 from linear_regression.read_write import read_thetas
 from linear_regression.calculation import predict
 from linear_regression.read_write import read_data
-from linear_regression.calculation import average, standard_deviation, standardize
+from linear_regression.calculation import (
+    average, standard_deviation, standardize)
 
 
 def predict_price():

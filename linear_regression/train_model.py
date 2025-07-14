@@ -1,8 +1,9 @@
 import numpy as np
 
 from linear_regression.read_write import read_data, read_thetas, write_thetas
-from linear_regression.calculation import train, mean_squared_error
-from linear_regression.calculation import average, standard_deviation, standardize
+from linear_regression.calculation import train
+from linear_regression.calculation import (
+    average, standard_deviation, standardize)
 
 
 def standardize_mileages(data):
@@ -26,7 +27,6 @@ def train_model():
 
     write_thetas(theta0, theta1)
     print("Thetas updated successfully.")
-
 
 
 if __name__ == "__main__":

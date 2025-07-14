@@ -38,11 +38,11 @@ def standardize(input_data, avg, sd):
 
 
 def predict(theta0, theta1, mileage):
-    return  theta0 + (theta1 * mileage)
+    return theta0 + (theta1 * mileage)
 
 
 def train(data, theta0, theta1):
-    
+
     def loop(data, theta0, theta1):
         temp_theta0 = 0.0
         temp_theta1 = 0.0
@@ -55,13 +55,12 @@ def train(data, theta0, theta1):
         temp_theta0 = LEARNING_RATE * (temp_theta0 / len(data))
         temp_theta1 = LEARNING_RATE * (temp_theta1 / len(data))
         return theta0 - temp_theta0, theta1 - temp_theta1
-        # return temp_theta0, temp_theta1
 
-    print(f"Before training: theta0 = {theta0}, theta1 = {theta1}, MSE = {mean_squared_error(data, theta0, theta1)}")
+    print(f"[INFO] theta0 = {theta0}, theta1 = {theta1}, MSE = {mean_squared_error(data, theta0, theta1)}")
     for number in range(LOOP_COUNT):
         theta0, theta1 = loop(data, theta0, theta1)
         if number % 100 == 0:
             print(f"Loop {number}: theta0 = {theta0}, theta1 = {theta1}, MSE = {mean_squared_error(data, theta0, theta1)}")
-    print(f"After training: theta0 = {theta0}, theta1 = {theta1}, MSE = {mean_squared_error(data, theta0, theta1)}")
+    print(f"[INFO] theta0 = {theta0}, theta1 = {theta1}, MSE = {mean_squared_error(data, theta0, theta1)}")
 
     return theta0, theta1
