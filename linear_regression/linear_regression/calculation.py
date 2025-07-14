@@ -15,27 +15,48 @@ def mean_squared_error(data, theta0, theta1):
         predicted_price = predict(theta0, theta1, mileage)
         error += (predicted_price - price) ** 2
 
-    return error / len(data)
+    try:
+        return error / len(data)
+    except ZeroDivisionError as e:
+        print("[ERROR] func mean_squared_error: Division by zero")
+        raise e
 
 
 def average(data):
     """
     Data is a list
     """
-    return sum(data) / len(data)
+    try:
+        return sum(data) / len(data)
+    except ZeroDivisionError as e:
+        print("[ERROR] func average: Division by zero")
+        raise e
 
 
 def standard_deviation(data):
     """
     Data is a list
     """
-    avg = average(data)
-    variance = sum([(x - avg) ** 2 for x in data]) / len(data)
-    return math.sqrt(variance)
+    try:
+        avg = average(data)
+        variance = sum([(x - avg) ** 2 for x in data]) / len(data)
+        sd = math.sqrt(variance)
+        assert sd
+        return sd
+    except ZeroDivisionError as e:
+        print("[ERROR] func standard_deviation: Division by zero")
+        raise e
+    except AssertionError as e:
+        print("[ERROR] func standard_deviation: Standard deviation is zero")
+        raise e
 
 
 def standardize(input_data, avg, sd):
-    return (input_data - avg) / sd
+    try:
+        return (input_data - avg) / sd
+    except ZeroDivisionError as e:
+        print("[ERROR] func standardize: Standard deviation is zero")
+        raise e
 
 
 def predict(theta0, theta1, mileage):

@@ -70,4 +70,7 @@ def draw_graph():
 
 
 if __name__ == "__main__":
-    draw_graph()
+    try:
+        draw_graph()
+    except Exception as e:
+        print(f"[ERROR] {e}")

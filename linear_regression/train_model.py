@@ -10,4 +10,7 @@ def train_model():
 
 
 if __name__ == "__main__":
-    train_model()
+    try:
+        train_model()
+    except Exception as e:
+        print(f"[ERROR] {e}")

@@ -18,4 +18,7 @@ def predict_price():
 
 
 if __name__ == "__main__":
-    predict_price()
+    try:
+        predict_price()
+    except Exception as e:
+        print(f"[ERROR] {e}")
