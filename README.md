@@ -13,3 +13,6 @@ python -m pip install -r requirements.txt
 # Predict price
 python3 linear_regression/predict_price.py
 
+# Train model
+python3 linear_regression/train_model.py
+
