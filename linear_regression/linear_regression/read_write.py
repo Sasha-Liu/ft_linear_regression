@@ -35,6 +35,7 @@ def write_thetas(new_thata0, new_theta1):
     try:
         with open(THETAS_FILE, "w", encoding="utf-8") as file:
             file.write(f"{new_thata0}\n{new_theta1}")
+        print("[INFO] Thetas updated successfully.")
     except Exception as e:
         print(f"[ERROR] Failed to update thetas file: {e}")
         raise e

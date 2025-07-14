@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 LEARNING_RATE = 0.001
 LOOP_COUNT = 10000
@@ -41,6 +42,20 @@ def predict(theta0, theta1, mileage):
     return theta0 + (theta1 * mileage)
 
 
+def standardize_mileages(data):
+    print("[INFO] Standardizing mileages...")
+    mileages = [mileage for mileage, _ in data]
+    avg = average(mileages)
+    sd = standard_deviation(mileages)
+
+    stardardized_data = np.array([
+        (standardize(mileage, avg, sd), price)
+        for mileage, price in data
+    ])
+    print("[INFO] Standardization complete.")
+    return stardardized_data
+
+
 def train(data, theta0, theta1):
 
     def loop(data, theta0, theta1):
@@ -55,6 +70,8 @@ def train(data, theta0, theta1):
         temp_theta0 = LEARNING_RATE * (temp_theta0 / len(data))
         temp_theta1 = LEARNING_RATE * (temp_theta1 / len(data))
         return theta0 - temp_theta0, theta1 - temp_theta1
+    
+    data = standardize_mileages(data)
 
     print(f"[INFO] theta0 = {theta0}, theta1 = {theta1}, MSE = {mean_squared_error(data, theta0, theta1)}")
     for number in range(LOOP_COUNT):
