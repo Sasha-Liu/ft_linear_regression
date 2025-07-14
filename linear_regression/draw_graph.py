@@ -6,6 +6,8 @@ from linear_regression.calculation import (
     average,
 )
 
+SAVE_PATH = "./linear_regression/data/cars.png"
+
 
 def calculate_linear_regression_line(theta0, theta1, avg, sd):
     """
@@ -37,30 +39,35 @@ def calculate_linear_regression_line(theta0, theta1, avg, sd):
     ]
 
 
-def draw_graph(data, theta0, theta1):
+def draw_graph():
+    #  Prepare data
+    theta0, theta1 = read_thetas()
+    data = read_data()
     mileages = [mileage for mileage, _ in data]
     prices = [price for _, price in data]
     avg = average(mileages)
     sd = standard_deviation(mileages)
-    theta0, theta1 = read_thetas()
-    dots = calculate_linear_regression_line(theta0, theta1, avg, sd)
 
+    #  Plot dots and line
     fig, ax = plt.subplots(figsize=(10, 5.5), layout="constrained")
     ax.scatter(mileages, prices)
+    dots = calculate_linear_regression_line(theta0, theta1, avg, sd)
     ax.plot(
         [dots[0][0], dots[1][0]],
         [dots[0][1], dots[1][1]],
     )
 
+    #  Set labels and titles
     labels = ax.get_xticklabels()
     plt.setp(labels, rotation=45, horizontalalignment="right")
     ax.set_xlabel("Mileage (km)")
     ax.set_ylabel("Price (euro)")
     ax.set_title("Linear Regression")
+
+    #  Present graph and save it
     plt.show()
+    fig.savefig(SAVE_PATH, transparent=False, dpi=80, bbox_inches="tight")
 
 
 if __name__ == "__main__":
-    theta0, theta1 = read_thetas()
-    data = read_data()
-    draw_graph(data, theta0, theta1)
+    draw_graph()
